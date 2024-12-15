@@ -93,7 +93,7 @@ const SearchPage = ({ onClose }) => {
     activeRequestRef.current = source;
 
     try {
-      const response = await axios.get(`${BACKEND_URL}api/v1/user/search?query=${query}`, {
+      const response = await axios.get(`${BACKEND_URL}/api/v1/user/search?query=${query}`, {
         cancelToken: source.token, // Attach cancel token
       });
       console.log("Response: ", response.data.data);

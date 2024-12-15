@@ -6,7 +6,6 @@ import LoadingPage from '../Components/Loading/Loading'
 const AuthRoute = ({children, redirect}) => {
     const [isAuth, setIsAuth] = useState(false)
     const { userLoading, isAuthenticated } = useSelector(state => state.userAuth)
-    console.log(redirect)
 
     useEffect(() => {
         if(isAuthenticated) {

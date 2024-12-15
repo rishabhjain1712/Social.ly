@@ -11,7 +11,7 @@ const Chat = ({selectedUser}) => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [user, setUser] = useState(null);
-  const socket = io("http://localhost:4888");
+  const socket = io(process.env.REACT_APP_BACKEND_URL);
 
   const dispatch = useDispatch();
   const { loading, error, message, chat } = useSelector((state) => state.chat);

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { BACKEND_URL } from '../../constants/urls';
 
-const URL = BACKEND_URL + "api/v1/post/comment";
+const URL = BACKEND_URL + "/api/v1/post/comment";
 
 axios.defaults.withCredentials = true
 
