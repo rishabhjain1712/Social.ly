@@ -1,0 +1,116 @@
+.user-list {
+    width: 25%;
+    background-color: #000;
+    color: #fff;
+    border-right: 1px solid #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    overflow-x: hidden;
+}
+
+.user-list .user-list-title {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #00bfff;
+}
+
+.user-list .user-list-items {
+    padding: 0;
+}
+
+.user-list .user-item {
+    /* border: 1px solid yellow; */
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.user-list .user-item:hover {
+    background-color: #1a1a1a;
+    transform: translateZ(10px) scale(1.02);
+    box-shadow: 0px 2px 3px rgb(0, 191, 255);
+}
+
+.user-list .user-avatar {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    margin-right: 1rem;
+}
+
+.user-list .user-info {
+    /* border: 1px solid red; */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0;
+    margin: 0;
+    gap: 0.2rem;
+    overflow: hidden;
+}
+
+.user-list .user-name {
+    /* border: 1px solid yellow; */
+    height: 100%;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #fff;
+    max-width: 100%;
+}
+
+.user-list .user-last-message {
+    /* border: 1px solid yellow; */
+    font-size: 0.9rem;
+    color: #aaa;
+    margin: 0rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    height: 100%;
+    max-width: 100%;
+}
+
+.user-list .user-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.user-list .last-message-time {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    color: #888;
+    margin-bottom: 0.5rem;
+}
+
+.user-list .more-icon {
+    color: #888;
+}
+
+.user-search-input {
+    width: 92%;
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    border: 1px solid #1a1a1a;
+    border-radius: 5px;
+    background-color: #1a1a1a;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.user-search-input:focus {
+    border-color: #00bfff;
+}

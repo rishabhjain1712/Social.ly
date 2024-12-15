@@ -1,0 +1,16 @@
+:root {
+  --primary: #4a90e2;
+  --secondary: #f4f4f4;
+  --tertiary: #f4f4f4;
+  --quaternary: #333;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--secondary);
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  /* height: 100vh; */
+  overflow-y: hidden;
+}

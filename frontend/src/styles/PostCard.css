@@ -1,0 +1,155 @@
+/* Base Container */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: #000;
+    overflow-y: auto;
+    height: 100vh;
+    width: 100%;
+}
+
+/* Post Card */
+.post-card {
+    width: 100%;
+    max-width: 600px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 191, 255, 0.2);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 191, 255, 0.4);
+}
+
+/* Post Header */
+.post-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #00bfff;
+    transition: transform 0.3s ease-in-out;
+}
+
+.avatar:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.post-header .user-info .user-details {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 0.25rem;
+}
+
+.user-name {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #00bfff;
+    margin: 0;
+    letter-spacing: 0.6px;
+}
+
+.user-location {
+    font-size: 0.8rem;
+    color: #ddd;
+    margin: 0;
+    letter-spacing: 0.4px;
+}
+
+.more-icon {
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.more-icon:hover {
+    color: #00bfff;
+}
+
+/* Post Image */
+.post-image {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+}
+
+/* Post Content */
+.post-content {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+/* Post Actions */
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.action-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    color: #fff;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.action-item:hover {
+    transform: scale(1.1);
+    color: #00bfff;
+}
+
+.action-icon {
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .post-card {
+        padding: 1rem;
+    }
+
+    .post-content {
+        font-size: 1rem;
+    }
+
+    .user-name {
+        font-size: 1rem;
+    }
+
+    .user-location {
+        font-size: 0.9rem;
+    }
+
+    .avatar {
+        width: 2rem;
+        height: 2rem;
+    }
+}

@@ -1,0 +1,272 @@
+
+.modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #000;
+    z-index: 1200;
+}
+
+.modal-cont {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.modal-cont::before {
+    display: flex;
+    justify-content: flex-end;
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    color: white;
+    opacity: 0.7;
+    background-color: #000;
+    /* z-index: 120; */
+}
+
+.modal-cont .modal {
+    position: relative;
+    width: 70%;
+    height: 75%;
+    background: #222;
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 4px;
+    border-radius: 4px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.modal-cont .modal .inptBx {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-cont .modal .inptBx .upload-container {
+    text-align: center;
+    margin: 30px auto;
+    max-width: 400px;
+    padding: 20px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    background-color: #333;
+  }
+
+.modal-cont .modal .inptBx h2 {
+    color: #000;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.modal-cont .modal .inptBx .instructions {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.modal-cont .modal .inptBx .customFileInput {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #00BFFF;
+    width: 50%;
+    color: black;
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.modal-cont .modal .inptBx .customFileInput:hover {
+    background-color: #009ACD; /* Slightly darker blue */
+}
+
+.modal-cont .modal .inptBx .customFileInput:active {
+    background-color: #007BA7; /* Even darker for active click */
+}
+  
+
+.modal-cont .modal .imgBx {
+    /* position: relative; */
+    /* border: 2px solid red; */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding-right: 40px; */
+}
+
+.modal-cont .modal .imgBx img {
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+
+.modal-cont .modal .content {
+    /* border: 2px solid green; */
+    position: relative;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 40px;
+    padding-left: 12px;
+}
+
+.modal-cont .modal .close {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.modal-cont .modal .content .create {
+    /* border: 2px solid pink; */
+    background: none;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+    /* font-size: 2em; */
+}
+
+.modal-cont .modal .content .create .user {
+    /* border: 2px solid yellow; */
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    height: 40px;
+    margin-left: 4px;
+}
+
+.modal-cont .modal .content .create .user img {
+    /* border: 1px solid green; */
+    width: 40px;
+    height: 40px;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.modal-cont .modal .content .create .user .info {
+    /* border: 2px solid aqua; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.modal-cont .modal .content .create .caption {
+    /* border: 2px solid red; */
+    width: 100%;
+    height: 50%;
+}
+
+.modal-cont .modal .content .create .caption textarea {
+    width: 94%;
+    height: 90%;
+    background: #333;
+    border: none;
+    outline: none;
+    padding: 15px 10px 7.5px;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.modal-cont .modal .content .create .location {
+    /* border: 2px solid yellow; */
+    width: 100%;
+    margin-bottom: 1rem;
+    /* height: 50%; */
+}
+
+.modal-cont .modal .content .create .location input {
+    width: 94%;
+    height: 100%;
+    background: #333;
+    border: none;
+    outline: none;
+    padding: 7.5px 10px 7.5px;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.modal-cont .modal .content .post-btn {
+    /* border: 1px solid yellow; */
+    width: 98%;
+    height: 8%;
+    display: flex;
+    margin-bottom: 4px;
+}
+
+.modal-cont .modal .content .post-btn button {
+    width: 100%;
+    height: 100%;
+    align-self: flex-start;
+    background-color: #00bfff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.7rem 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.6s, border 0.6s, box-shadow 0.4s, transform 0.4s;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-cont .modal .content .post-btn button:hover {
+    background-color: rgba(0, 191, 255, 0.097);
+    border: 1px solid #00bfff;
+    box-shadow: 0px 4px 8px rgba(0, 191, 255, 0.4);
+    transform: scale(1.05);
+    transform: translateY(-2px);
+}
+
+/* .post-btn button .spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #111;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+} */

@@ -1,0 +1,259 @@
+.profile-header {
+    /* border: 1px solid yellow; */
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #1a1a1a;
+    padding: 0rem 4rem 1rem;
+    gap: 4rem;
+}
+
+.profile-dp {
+    flex-shrink: 0;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    margin-right: 1rem;
+    border: 4px solid #00bfff;
+}
+
+.profile-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-name-cont {
+    display: flex;
+    gap: 3rem;
+}
+
+.profile-name {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+    margin-bottom: 0.5rem;
+}
+
+.edit-profile-btn {
+    align-self: flex-start;
+    background-color: rgba(54, 54, 54, 1);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7rem 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.6s, border 0.6s, box-shadow 0.4s;
+    font-size: 1rem;
+}
+
+.edit-profile-btn:hover {
+    background-color: rgba(54, 54, 54, 0.5);
+    border: 1px solid #00bfff;
+    box-shadow: 0px 4px 8px rgba(0, 191, 255, 0.4);
+}
+
+.profile-bio-cont {
+    /* border: 1px solid yellow; */
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    margin-bottom: 1rem;
+    padding: 0;
+    gap: 0;
+}
+
+.profile-bio {
+    font-size: 1rem;
+    color: #aaa;
+    /* margin-bottom: 1rem; */
+    line-height: 1.4;
+    /* border: 2px solid green; */
+    margin: 0;
+}
+
+.profile-stats {
+    display: flex;
+    justify-content: flex-start;
+    margin: 1rem 0;
+    gap: 4rem;
+}
+
+.profile-stats .stat-item {
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.stat-value {
+    font-size: 1.4rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: #888;
+}
+
+.follow-cont {
+    /* border: 2px solid yellow; */
+    margin-bottom: 0.5rem;
+    width: 50%;
+    /* display: none; */
+}
+
+.follow-cont .follow-btn {
+    width: 100%;
+    align-self: flex-start;
+    background-color: rgba(54, 54, 54, 1);
+    background-color: #00bfff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7rem 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.6s, border 0.6s, box-shadow 0.4s;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.follow-cont .follow-btn:hover {
+    background-color: rgba(0, 191, 255, 0.097);
+    border: 1px solid #00bfff;
+    box-shadow: 0px 4px 8px rgba(0, 191, 255, 0.4);
+    /* background: linear-gradient(90deg, #00aaff, #1ecbe1, #00bfff); */
+    transform: scale(1.05);
+
+    transform: translateY(-2px);
+}
+
+.unfollow-cont {
+    /* border: 2px solid yellow; */
+    width: 50%;
+    display: flex;
+    gap: 0.5rem;
+    /* display: none; */
+}
+
+.unfollow-cont .unfollow-btn {
+    width: 50%;
+    align-self: flex-start;
+    background-color: rgba(54, 54, 54, 1);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7rem 1.2rem;
+    cursor: pointer;
+    border: 1px solid rgba(0, 191, 255, 0.4);
+    transition: background-color 0.6s, border 0.6s, box-shadow 0.4s;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.unfollow-cont .unfollow-btn:hover {
+    background-color: rgba(54, 54, 54, 0.5);
+    border: 1px solid #00bfff;
+    box-shadow: 0px 4px 8px rgba(0, 191, 255, 0.4);
+}
+
+.unfollow-cont .msg-btn {
+    width: 50%;
+    align-self: flex-start;
+    background-color: rgba(54, 54, 54, 0.4);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7rem 1.2rem;
+    border: 1px solid white;
+    cursor: pointer;
+    transition: background-color 0.6s, border 0.6s, box-shadow 0.4s;
+    font-size: 1rem;
+}
+
+.unfollow-cont .msg-btn:hover {
+    background-color: rgba(54, 54, 54, 0.5);
+    /* border: 1px solid #00bfff; */
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.4);
+}
+
+
+
+.follow-modal {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 250px;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: rgba(17, 17, 17, 0.95);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 10;
+}
+
+/* Show modal on hover */
+.stat-item:hover .follow-modal {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Basic styles for the followers/following list */
+.follow-list {
+    padding: 10px;
+    font-size: 14px;
+}
+
+.follow-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px;
+    cursor: pointer;
+    gap: 12px;
+    /* border: 1px solid red; */
+}
+
+/* .follow-item:hover {
+    background-color: #1a1a1a;
+    color: #00bfff;
+} */
+
+.follow-item .follow-user {
+    /* border: 1px solid red; */
+    width: 100%;
+    height: fit-content;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+.follow-item .follow-user:hover {
+    background-color: #1a1a1a;
+    color: #00bfff;
+}
+
+.follow-item img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.follow-item span {
+    font-weight: bold;
+}

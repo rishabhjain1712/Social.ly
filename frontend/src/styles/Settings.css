@@ -1,0 +1,86 @@
+.settings-page {
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: #121212;
+    color: #fff;
+    border-radius: 8px;
+    width: 100%;
+    height: 160%;
+}
+
+.settings-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #00bfff;
+}
+
+.profile-section, .password-section {
+    /* border: 1px solid red; */
+    width: 100%;
+    max-width: 80%;
+    background-color: #181818;
+    border: 1px solid #1a1a1a;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    transition: background-color 0.6s ease, box-shadow 0.6s ease, transform 0.6s ease;
+}
+
+.profile-section:hover, .password-section:hover {
+    background-color: #1a1a1a;
+    transform: translateY(-8px);
+    box-shadow: 0px 8px 12px rgba(0, 191, 255, 1);
+}
+
+.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #00bfff;
+}
+
+.avatar-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 1rem;
+    object-fit: cover;
+}
+
+.input-field {
+    width: 96%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    background-color: #000;
+    border: 1px solid #1a1a1a;
+    border-radius: 8px;
+    color: #fff;
+    /* border: 1px solid yellow; */
+}
+
+.update-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #00bfff;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.update-btn:hover {
+    background-color: #008fcc;
+}
