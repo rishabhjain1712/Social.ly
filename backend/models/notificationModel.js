@@ -38,18 +38,18 @@ const notificationSchema = mongoose.Schema({
 const Notification = mongoose.model('Notification', notificationSchema);
 export default Notification
 
-// Follow ✅
-// Unfollow ✅
-// Post Like ✅
-// Post Unlike ✅
-// Comment Like ✅
-// Comment Unlike ✅
-// Reply Like ✅
-// Reply Unlike ✅
-// Comment ✅
-// Reply ✅
-// Save post ✅
-// Unsave post ✅
-// Reply Delete ✅
-// Comment Delete ✅
-// Post Delete ✅
+// Follow ✅ Testing ✅
+// Unfollow ✅ Testing ✅
+// Post Like ✅ Testing ✅
+// Post Unlike ✅ Testing ✅
+// Comment Like ✅ Testing ✅
+// Comment Unlike ✅ Testing ✅
+// Reply Like ✅ Testing ✅
+// Reply Unlike ✅ Testing ✅
+// Comment ✅ Testing ✅
+// Reply ✅ Testing ✅
+// Save post ✅ Testing ✅
+// Unsave post ✅ Testing ✅
+// Reply Delete ✅ Testing ❌
+// Comment Delete ✅ Testing ❌
+// Post Delete ✅ Testing ❌

@@ -603,7 +603,9 @@ export const getUserById = async (req, res) => {
         const user = await User.findById(id)
             .populate('posts')
             .populate('taggedPosts')
-            .populate('savedPosts');
+            .populate('savedPosts')
+            .populate('following', 'firstName middleName lastName username avatar')
+            .populate('followers', 'firstName middleName lastName username avatar');
 
         // Check user
         if(!user) {
@@ -654,7 +656,7 @@ export const followUser = async (req, res) => {
         await loggedInUser.save();
 
         // Create notification
-        const notification = await Notification.create({
+        let notification = await Notification.create({
             entity: "User",
             activity: "follow",
             owner: loggedInUser._id,
@@ -726,6 +728,7 @@ export const unfollowUser = async (req, res) => {
             entity: "User",
             activity: "unfollow",
             owner: loggedInUser._id,
+            user: user._id
         })
 
         // Add notification to user

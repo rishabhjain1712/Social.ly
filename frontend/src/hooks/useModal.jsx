@@ -15,7 +15,7 @@ const useModal = () => {
 
     const handlePostClick = useCallback((postId) => {
       dispatch(getPostById(postId));
-        setIsModalOpen(true);
+      setIsModalOpen(true);
     }, []);
 
     useEffect(() => {

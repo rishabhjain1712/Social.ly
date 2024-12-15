@@ -460,7 +460,7 @@ export const saveAndUnsavePost = async (req, res) => {
 
             // Remove saved notification from user
             let notification = await Notification.findOne({
-                owner: user._id,
+                owner: req.user._id,
                 activity: "save",
                 entity: "Post",
                 post: post._id,
@@ -503,7 +503,7 @@ export const saveAndUnsavePost = async (req, res) => {
 
             // Remove saved notification from user
             let notification = await Notification.findOne({
-                owner: user._id,
+                owner: req.user._id,
                 activity: "unsave",
                 entity: "Post",
                 post: post._id,
@@ -909,7 +909,8 @@ export const addReply = async (req, res) => {
             activity: "reply",
             comment: comment._id,
             post: comment.post,
-            owner: req.user._id
+            owner: req.user._id,
+            reply: newReply._id
         })
 
         let user, flag=false;
@@ -924,7 +925,7 @@ export const addReply = async (req, res) => {
         }
 
         // If own comment
-        if(comment.owner.toString() !== req.user._id.toString()) {
+        if(comment.owner.toString() !== req.user._id.toString() && !flag) {
             // Add notification in commented user
             user = await User.findById(comment.owner);
             user.notifications.unshift(notification._id);

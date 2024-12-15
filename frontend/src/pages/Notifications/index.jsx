@@ -52,20 +52,24 @@ const NotificationPage = () => {
       } else if(notification.activity === "unfollow") {
         msg = `${notification?.owner?.username} unfollowed you`
       } else if(notification.activity === "comment") {
-        msg = `${notification?.owner?.username} commented on your post`
+        msg = `${notification?.owner?.username} commented "${notification?.comment?.comment}" on your post`
       } else if(notification.activity === "reply") {
         if(notification.entity === "Comment") {
-          msg = `${notification?.owner?.username} replied to your comment ${notification?.comment?.comment}`
+          msg = `${notification?.owner?.username} replied "${notification?.reply?.reply}" to your comment "${notification?.comment?.comment}"`
         } else {
           msg = `${notification?.owner?.username} replied to a comment on your post`
         }
+      } else if(notification.activity === "save"){
+        msg = `${notification?.owner?.username} saved your post`
+      } else if(notification.activity === "unsave"){
+        msg = `${notification?.owner?.username} unsaved your post`
       } else {
         if(notification.entity === "Post") {
           msg = `${notification?.owner?.username} liked your post`
         } else if(notification.entity === "Comment") {
-          msg = `${notification?.owner?.username} liked your comment ${notification?.comment?.comment}`
+          msg = `${notification?.owner?.username} liked your comment "${notification?.comment?.comment}"`
         } else {
-          msg = `${notification?.owner?.username} liked your reply ${notification?.reply?.reply}`
+          msg = `${notification?.owner?.username} liked your reply "${notification?.reply?.reply}"`
         }
       }
       mssge.push(msg);

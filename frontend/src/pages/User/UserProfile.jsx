@@ -55,7 +55,7 @@ const UserProfile = () => {
 
   useEffect(() => {
     dispatch(getUser(params.id));
-  }, [dispatch]);
+  }, [dispatch, params.id]);
 
   useEffect(() => {
     if (error) {
@@ -65,7 +65,7 @@ const UserProfile = () => {
       if(user._id === currentUser._id){
         setIsFollow(false);
         setIsUnFollow(false);
-      } else if(user.followers.includes(currentUser._id)){
+      } else if(user.followers.some((follower) => follower._id === currentUser._id)){
         setIsFollow(false);
         setIsUnFollow(true);
       } else {
@@ -119,7 +119,7 @@ const UserProfile = () => {
           {activeTab === 'posts' && (
             <div className="posts-grid">
               {user?.posts && user?.posts.map((post) => (
-                <div key={post._id} className="post-item" onClick={() => handlePostClick(post)}>
+                <div key={post._id} className="post-item" onClick={() => handlePostClick(post?._id)}>
                   <img src={post?.image?.url} alt="Post" className="post-image" />
                   <div className="post-caption">{post.caption}</div>
                 </div>
@@ -129,7 +129,7 @@ const UserProfile = () => {
           {activeTab === 'tagged' && (
             <div className="posts-grid">
               {user?.taggedPosts && user?.taggedPosts.map((post) => (
-                <div key={post._id} className="post-item" onClick={() => handlePostClick(post)}>
+                <div key={post._id} className="post-item" onClick={() => handlePostClick(post?._id)}>
                   <img src={post?.image?.url} alt="Post" className="post-image" />
                   <div className="post-caption">{post.caption}</div>
                 </div>
