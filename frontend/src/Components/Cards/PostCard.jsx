@@ -78,7 +78,6 @@ const PostCard = ({onComment, posts, onLike, onSave}) => {
                   />
               )} */}
             {/* <MoreHorizontal className="more-icon" /> */}
-            {/* <MoreHorizontal className="more-icon" /> */}
           </div>
           <img src={post?.image?.url} alt="Post visual" className="post-image" />
           <p className="post-content">{post?.caption}</p>
