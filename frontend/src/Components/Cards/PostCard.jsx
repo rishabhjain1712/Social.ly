@@ -1,12 +1,21 @@
-import React, { useEffect } from 'react'
-import { Heart, MessageCircle, Share2, Bookmark, MoreHorizontal } from 'lucide-react';
+import React, { useEffect, useState } from 'react'
+import { Heart, MessageCircle, Share2, Bookmark, MoreHorizontal, Trash } from 'lucide-react';
 import '../../styles/PostCard.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { likeAndUnlikePost, saveAndUnsavePost } from '../../redux/Actions/postActions';
+import { deletePost, likeAndUnlikePost, saveAndUnsavePost } from '../../redux/Actions/postActions';
 import { toast } from 'react-toastify';
 import toastOptions from '../../constants/toast';
 
+const DropdownMenu = ({ onDelete }) => (
+  <div className="drop-menu">
+    <div onClick={onDelete} className="dropdown-item">
+      <Trash style={{ marginRight: "8px" }} /> Delete
+    </div>
+  </div>
+);
+
 const PostCard = ({onComment, posts, onLike, onSave}) => {
+  const [activeDropdown, setActiveDropdown] = useState(null);
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.userAuth);
 
@@ -20,6 +29,14 @@ const PostCard = ({onComment, posts, onLike, onSave}) => {
   const handleSave = (id) => {
     dispatch(saveAndUnsavePost(id));
   }
+
+  const handleDelete = (id) => {
+    dispatch(deletePost(id));
+  };
+
+  const handleDropdownToggle = (id) => {
+    setActiveDropdown(activeDropdown === id ? null : id);
+  };
 
   useEffect(() => {
     if (message) {
@@ -54,6 +71,12 @@ const PostCard = ({onComment, posts, onLike, onSave}) => {
                 <p className="user-location">{post?.location}</p>
               </div>
             </div>
+            {/* <MoreHorizontal className="more-icon" style={{ cursor: "pointer", marginLeft: '12px', fontSize: '0.8rem' }} onClick={() => handleDropdownToggle("post")} />
+              {activeDropdown === "post" && (
+                  <DropdownMenu
+                      onDelete={() => handleDelete(post?._id)}
+                  />
+              )} */}
             {/* <MoreHorizontal className="more-icon" /> */}
           </div>
           <img src={post?.image?.url} alt="Post visual" className="post-image" />

@@ -54,7 +54,7 @@ const NotificationPage = () => {
       } else if(notification.activity === "comment") {
         msg = `${notification?.owner?.username} commented "${notification?.comment?.comment}" on your post`
       } else if(notification.activity === "reply") {
-        if(notification.entity === "Comment") {
+        if(notification?.post?.owner === notification?.owner?._id) {
           msg = `${notification?.owner?.username} replied "${notification?.reply?.reply}" to your comment "${notification?.comment?.comment}"`
         } else {
           msg = `${notification?.owner?.username} replied to a comment on your post`

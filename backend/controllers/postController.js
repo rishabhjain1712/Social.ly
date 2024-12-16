@@ -309,11 +309,12 @@ export const deletePost = async (req, res) => {
         // Delete all notifications related to this post 🔔 ❌
         const notifications = await Notification.find({ post: id });
         const notificationIds = notifications.map(notification => notification._id);
+        console.log("Something: ", notificationIds)
 
         await Notification.deleteMany({ post: id });
 
         await User.updateMany(
-            { _id: { $in: notificationIds } },
+            {},
             { $pull: { notifications: { $in: notificationIds } } }
         );
 
@@ -908,7 +909,7 @@ export const addReply = async (req, res) => {
             entity: "Comment",
             activity: "reply",
             comment: comment._id,
-            post: comment.post,
+            post: comment.post._id,
             owner: req.user._id,
             reply: newReply._id
         })
@@ -934,7 +935,7 @@ export const addReply = async (req, res) => {
         }
 
         if(!flag) {
-            notification.deleteOne();
+            await notification.deleteOne();
         }
 
         // Send response
@@ -1102,7 +1103,7 @@ export const deleteReply = async (req, res) => {
 
         // Delete reply from comment's array
         let comment = await Comment.findById(reply.comment);
-        comment.reply = comment.reply.filter(replyId => replyId.toString() !== replyId.toString());
+        comment.reply = comment.reply.filter(repId => repId.toString() !== replyId.toString());
         await comment.save();
 
         // Delete all notifications related to this reply 🔔 ❌

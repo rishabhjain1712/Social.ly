@@ -50,6 +50,7 @@ export default Notification
 // Reply ✅ Testing ✅
 // Save post ✅ Testing ✅
 // Unsave post ✅ Testing ✅
-// Reply Delete ✅ Testing ❌
-// Comment Delete ✅ Testing ❌
-// Post Delete ✅ Testing ❌
+// Reply Delete ✅ Testing ✅
+// Comment Delete ✅ Testing ✅
+// Post Delete ✅ Testing ✅
+// Reply Reply for post owner ✅ Testing ✅

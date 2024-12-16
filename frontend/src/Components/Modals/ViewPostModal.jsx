@@ -97,6 +97,7 @@ const ViewPostModal = ({ onLoad, onClose, postData }) => {
     };
 
     const handleDelete = (type, id) => {
+        console.log("type: ", type, "id: ", id)
         if(type === "Comment"){
             dispatch(deleteComment(id));
         } else if (type === "Reply") {
@@ -233,15 +234,18 @@ const ViewPostModal = ({ onLoad, onClose, postData }) => {
                                 className="avatar"
                                 />
                                 <p><strong style={{ color: "#00bfff" }}>{post?.owner?.username}</strong></p>
-                                <div className="more-box">
-                                    <MoreHorizontal className="three-dots" style={{ cursor: "pointer", marginLeft: '12px', fontSize: '0.8rem' }} onClick={() => handleDropdownToggle("post")} />
-                                    {activeDropdown === "post" && (
-                                        <DropdownMenu
-                                            onEdit={() => handleEdit("updateCaption", post?._id, post?.caption)}
-                                            onDelete={() => handleDelete("Post", post?._id)}
-                                        />
-                                    )}
-                                </div>
+                                {
+                                    post?.owner?._id === user?._id && 
+                                    <div className="more-box">
+                                        <MoreHorizontal className="three-dots" style={{ cursor: "pointer", marginLeft: '12px', fontSize: '0.8rem' }} onClick={() => handleDropdownToggle("post")} />
+                                        {activeDropdown === "post" && (
+                                            <DropdownMenu
+                                                onEdit={() => handleEdit("updateCaption", post?._id, post?.caption)}
+                                                onDelete={() => handleDelete("Post", post?._id)}
+                                            />
+                                        )}
+                                    </div>
+                                }
                             </div>
                             <div className="owner-details">
                                 <p>{post?.caption}</p>
@@ -297,20 +301,22 @@ const ViewPostModal = ({ onLoad, onClose, postData }) => {
                                                 <span>3w</span>
                                                 <span>{`${comment?.likes?.length} ${comment?.likes?.length === 1 ? "like" : "likes"}`} </span>
                                                 <span style={{ cursor: "pointer" }} onClick={() => replyClick(comment?._id)}>Reply</span>
-                                                <div className="more-box">
-                                                    <MoreHorizontal className="three-dots" style={{ cursor: "pointer", marginLeft: '12px', fontSize: '0.8rem' }} 
-                                                    onClick={() => handleDropdownToggle(
-                                                        `comment-${comment?._id}`
-                                                    )}
-                                                    />
-                                                    {activeDropdown === `comment-${comment?._id}` && (
-                                                        <DropdownMenu
-                                                        onEdit={() => handleEdit("updateComment", comment?._id, comment?.comment)}
-                                                        onDelete={() => handleDelete("Comment", comment?._id)}
+                                                {
+                                                    (comment?.owner?._id === user?._id || post?.owner?._id === user?._id) && 
+                                                    <div className="more-box">
+                                                        <MoreHorizontal className="three-dots" style={{ cursor: "pointer", marginLeft: '12px', fontSize: '0.8rem' }} 
+                                                        onClick={() => handleDropdownToggle(
+                                                            `comment-${comment?._id}`
+                                                        )}
                                                         />
-                                                    )}
-                                                </div>
-                                                
+                                                        {activeDropdown === `comment-${comment?._id}` && (
+                                                            <DropdownMenu
+                                                            onEdit={() => handleEdit("updateComment", comment?._id, comment?.comment)}
+                                                            onDelete={() => handleDelete("Comment", comment?._id)}
+                                                            />
+                                                        )}
+                                                    </div>
+                                                }
                                             </div>
                                         </div>
                                     </div>
@@ -351,22 +357,24 @@ const ViewPostModal = ({ onLoad, onClose, postData }) => {
                                                             <div className="reply-actions">
                                                                 <span>3w</span>
                                                                 <span>{`${reply?.likes?.length} ${reply?.likes?.length === 1 ? "like" : "likes"}`} </span>
-                                                                <div className="more-box">
-                                                                    <MoreHorizontal className="three-dots" style={{ cursor: "pointer", marginLeft: '12px', fontSize: '0.8rem' }} 
-                                                                    onClick={() =>
-                                                                        handleDropdownToggle(`reply-${reply?._id}`)
-                                                                    }
-                                                                    />
-                                                                    {activeDropdown === `reply-${reply?._id}` && (
-                                                                        <DropdownMenu
-                                                                            onEdit={() =>
-                                                                            handleEdit("updateReply", reply?._id, reply?.reply)}
-                                                                            onDelete={() =>
-                                                                            handleDelete("Reply", reply?._id)}
+                                                                {
+                                                                    reply?.owner?._id === user?._id &&
+                                                                    <div className="more-box">
+                                                                        <MoreHorizontal className="three-dots" style={{ cursor: "pointer", marginLeft: '12px', fontSize: '0.8rem' }} 
+                                                                        onClick={() =>
+                                                                            handleDropdownToggle(`reply-${reply?._id}`)
+                                                                        }
                                                                         />
-                                                                    )}
-                                                                </div>
-                                                                
+                                                                        {activeDropdown === `reply-${reply?._id}` && (
+                                                                            <DropdownMenu
+                                                                                onEdit={() =>
+                                                                                handleEdit("updateReply", reply?._id, reply?.reply)}
+                                                                                onDelete={() =>
+                                                                                handleDelete("Reply", reply?._id)}
+                                                                            />
+                                                                        )}
+                                                                    </div>
+                                                                }
                                                             </div>
                                                         </div>
                                                     </div>

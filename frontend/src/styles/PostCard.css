@@ -82,10 +82,23 @@
     color: #fff;
     cursor: pointer;
     transition: color 0.3s ease-in-out;
+    position: relative;
 }
 
 .more-icon:hover {
     color: #00bfff;
+}
+
+.more-icon .drop-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #000;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 191, 255, 0.2);
+    padding: 0.5rem;
+    display: none;
+    z-index: 10;
 }
 
 /* Post Image */
