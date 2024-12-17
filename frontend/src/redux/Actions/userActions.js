@@ -365,7 +365,6 @@ export const contactUs = (details) => async (dispatch) => {
                 "Content-Type": "application/json"
             }
         });
-        console.log("Data: ", data);
 
         dispatch({
             type: "CONTACT_US_SUCCESS",

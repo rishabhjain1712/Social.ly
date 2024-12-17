@@ -21,12 +21,12 @@ const Chat = ({selectedUser}) => {
     // Join user's room
     if (currentUser?._id) {
         socket.emit('joinRoom', currentUser._id);
-        console.log(`User ${currentUser._id} joined their room`);
+        // console.log(`User ${currentUser._id} joined their room`);
     }
 
     // Listen for new messages
     socket.on('newMessage', (receivedMessage) => {
-        console.log("Received new message: ", receivedMessage);
+        // console.log("Received new message: ", receivedMessage);
         setMessages((prevMessages) => [...prevMessages, receivedMessage]);
     });
 

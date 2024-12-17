@@ -46,11 +46,7 @@ const CreateModal = ({onClose}) => {
         e.preventDefault();
         const details = {...postDetails};
         details.mentions = details.mentions.trim().split(/\s+/);
-        console.log("Det:", details);
-        // setPostDetails(details);
-        console.log("Post:", postDetails);
         dispatch(createPost(details));
-        // onClose(false);
     };
 
     useEffect(() => {

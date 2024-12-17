@@ -97,7 +97,6 @@ const ViewPostModal = ({ onLoad, onClose, postData }) => {
     };
 
     const handleDelete = (type, id) => {
-        console.log("type: ", type, "id: ", id)
         if(type === "Comment"){
             dispatch(deleteComment(id));
         } else if (type === "Reply") {

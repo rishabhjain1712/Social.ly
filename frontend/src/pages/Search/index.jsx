@@ -96,7 +96,6 @@ const SearchPage = ({ onClose }) => {
       const response = await axios.get(`${BACKEND_URL}/api/v1/user/search?query=${query}`, {
         cancelToken: source.token, // Attach cancel token
       });
-      console.log("Response: ", response.data.data);
       setSearchResults(response.data.data);
     } catch (error) {
       if (axios.isCancel(error)) {
@@ -115,10 +114,6 @@ const SearchPage = ({ onClose }) => {
       }
     };
   }, []);
-
-  useEffect(() => {
-    console.log("Sear", searchResults)
-  }, [searchResults])
 
   useEffect(() => {
     if(isModalOpen){

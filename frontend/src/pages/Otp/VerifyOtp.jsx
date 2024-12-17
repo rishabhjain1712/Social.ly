@@ -28,7 +28,6 @@ const VerifyOtp = () => {
 
     useEffect(() => {
         if(message){
-            console.log(message)
             toast.success(message, toastOptions);
             dispatch({ type: "CLEAR_MESSAGE" })
             // navigate("/")

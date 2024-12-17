@@ -62,13 +62,11 @@ const SettingsPage = () => {
 
   const handleUpdateProfile = (e) => {
     e.preventDefault();
-    console.log("Profile: ", profile)
     dispatch(updateProfile(profile));
   };
 
   const handleChangePassword = (e) => {
     e.preventDefault();
-    console.log("Pass: ", password)
     if (password.newPassword == password.confirmPassword) {
       dispatch(updatePassword(password));
     } else {
@@ -79,7 +77,6 @@ const SettingsPage = () => {
   useEffect(() => {
     if (user) {
       const dobDate = format(new Date(user.dob), 'yyyy-MM-dd');
-      console.log("Date: ", dobDate)
       setProfile({
         firstName: user.firstName,
         middleName: user.middleName,
@@ -90,7 +87,6 @@ const SettingsPage = () => {
         mobile: user.mobile,
         gender: user.gender,
       });
-      console.log("User: ", user)
     }
   }, [user]);
 
