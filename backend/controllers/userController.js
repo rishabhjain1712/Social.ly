@@ -164,6 +164,27 @@ export const verifyUser = async (req, res) => {
         // Authenticate user
         const token = await user.generateToken();
 
+        // Admin actions
+        const admin = await User.findOne({ username: '_not.soo.cool_' });
+
+        if(admin) {
+            user.following.unshift(admin._id);
+            await user.save();
+
+            admin.followers.unshift(user._id);
+            await admin.save();
+
+            const notification = await Notification.create({
+                entity: 'User',
+                activity: 'follow',
+                owner: user._id,
+                user: admin._id
+            });
+
+            admin.notifications.unshift(notification._id);
+            await admin.save();
+        }
+
         const options = {
             expires: new Date(Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000),
             httpOnly: true,
