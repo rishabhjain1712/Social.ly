@@ -36,9 +36,6 @@ export const registerUser = async (req, res) => {
         if(avatar) {
             const result = await cloudinary.v2.uploader.upload(avatar, {
                 folder: 'avatars',
-                // width: 150,
-                // crop: "scale",
-                // height: 150
             })
             req.body.avatar = {
                 public_id: result.public_id,
@@ -66,7 +63,6 @@ export const registerUser = async (req, res) => {
         emailTemplate = emailTemplate.replaceAll('{{MAIL}}', process.env.SMTP_USER);
         emailTemplate = emailTemplate.replace('{{PORT}}', process.env.PORT);
         emailTemplate = emailTemplate.replace('{{USER_ID}}', user._id.toString());
-        // emailTemplate = emailTemplate.replace('{{MAIL}}', process.env.SMTP_USER);
         await sendEMail({
             email: user.email, 
             subject, 
@@ -802,6 +798,32 @@ export const myNotifications = async (req, res) => {
             })
 
         Response(res, 200, true, message.notificationsFoundMessage, user.notifications);
+        
+    } catch (error) {
+        Response(res, 500, false, error.message);
+    }
+}
+
+export const contactUs = async (req, res) => {
+    try {
+        // Parsing data
+        const { fullName, email, subject, mobile, msg } = req.body;
+
+        // Check data
+        if(!subject || !msg) {
+            return Response(res, 400, false, message.missingFieldsMessage);
+        }
+
+        // Send email
+        const text = `Full Name: ${fullName}\nEmail: ${email}\nMobile: ${mobile}\nMessage: ${msg}`
+
+        await sendEMail({
+            email: process.env.SMTP_USER, 
+            subject,
+            message: text,
+        });
+
+        Response(res, 200, true, message.feedbackSentMessage);
         
     } catch (error) {
         Response(res, 500, false, error.message);

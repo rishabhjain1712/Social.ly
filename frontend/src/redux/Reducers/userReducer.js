@@ -64,6 +64,10 @@ const getMyNotificationsRequest = createAction('MY_NOTIFICATIONS_REQUEST');
 const getMyNotificationsSuccess = createAction('MY_NOTIFICATIONS_SUCCESS');
 const getMyNotificationsFailure = createAction('MY_NOTIFICATIONS_FAILURE');
 
+const contactUsRequest = createAction('CONTACT_US_REQUEST');
+const contactUsSuccess = createAction('CONTACT_US_SUCCESS');
+const contactUsFailure = createAction('CONTACT_US_FAILURE');
+
 const clearError = createAction('CLEAR_ERROR');
 const clearAuthError = createAction('CLEAR_AUTH_ERROR');
 const clearMessage = createAction('CLEAR_MESSAGE');
@@ -297,5 +301,26 @@ export const myNotificationsReducer = createReducer(initialState, (builder) => {
         })
         .addCase(clearError, (state) => {
             state.error = null;
+        })
+})
+
+export const contactUsReducer = createReducer(initialState, (builder) => {
+    builder
+        .addCase(contactUsRequest, (state) => {
+            state.loading = true;
+        })
+        .addCase(contactUsSuccess, (state, action) => {
+            state.loading = false;
+            state.message = action.payload;
+        })
+        .addCase(contactUsFailure, (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        })
+        .addCase(clearError, (state) => {
+            state.error = null;
+        })
+        .addCase(clearMessage, (state) => {
+            state.message = null;
         })
 })

@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { followAndUnfollowUserReducer, getAllOtherUsers, getMyProfileReducer, getUserReducer, myNotificationsReducer, updateUserReducer, userAuthReducer } from "./Reducers/userReducer";
+import { contactUsReducer, followAndUnfollowUserReducer, getAllOtherUsers, getMyProfileReducer, getUserReducer, myNotificationsReducer, updateUserReducer, userAuthReducer } from "./Reducers/userReducer";
 import { createPostReducer, deletePostReducer, getAllPostsReducer, getMyPostsReducer, getPostByIdReducer, getPostOfFollowingReducer, getUserPostsReducer, likeAndUnlikePostReducer, saveAndUnsavePostReducer, updatePostReducer } from "./Reducers/postReducer";
 import { chatReducer } from "./Reducers/chatReducer";
 import { commentReducer, replyReducer } from "./Reducers/commentReducer";
@@ -25,7 +25,8 @@ const store = configureStore({
         reply: replyReducer,
         updatePost: updatePostReducer,
         deletePost: deletePostReducer,
-        notification: myNotificationsReducer
+        notification: myNotificationsReducer,
+        contact: contactUsReducer
     }
 })
 

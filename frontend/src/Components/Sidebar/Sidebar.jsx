@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Home, User, Bell, MessageCircle, Settings, Search, SquarePlusIcon,
+  Home, User, Bell, MessageCircle, Settings, Search, SquarePlusIcon, NotebookPenIcon
 } from 'lucide-react';
 import '../../styles/Sidebar.css';
 import Logo from '../Logo/Logo';
@@ -9,6 +9,9 @@ import CreateModal from '../Modals/CreateModal';
 import { logoutUser } from '../../redux/Actions/userActions';
 import { useDispatch, useSelector } from 'react-redux';
 import LogoutModal from '../Modals/LogoutModal';
+import ContactModal from '../Modals/ContactModal';
+import { toast } from 'react-toastify';
+import toastOptions from '../../constants/toast';
 
 const postData = {
     image: "https://via.placeholder.com/600",
@@ -79,6 +82,7 @@ const Sidebar = ({ onClose }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const [openCreateModal, setOpenCreateModal] = useState(false);
+  const [openContactModal, setOpenContactModal] = useState(false);
   const [openLogoutModal, setOpenLogoutModal] = useState(false);
 
   const [username, setUsername] = useState('');
@@ -90,6 +94,7 @@ const Sidebar = ({ onClose }) => {
   const location = useLocation();
 
   const { isAuthenticated, user } = useSelector(state => state.userAuth);
+  const { message, error } = useSelector(state => state.contact);
 
   const menuItems = [
     { icon: Home, label: 'Home', route: '/' },
@@ -99,16 +104,21 @@ const Sidebar = ({ onClose }) => {
     { icon: Bell, label: 'Notifications', route: '/notifications' },
     { icon: User, label: 'Profile', route: '/profile' },
     { icon: Settings, label: 'Settings', route: '/settings' },
+    { icon: NotebookPenIcon, label: 'Contact' },
   ];
 
   const handleItemClick = (item) => {
+    if(item.label === 'Create') {
+      setOpenCreateModal(true);
+      onClose(true)
+    } else if(item.label === 'Contact') {
+      setOpenContactModal(true);
+      onClose(true)
+    }
     if(item.label !== 'Create') {
         setSelectedItem({ label: item.label, route: item.route });
         navigate(item.route); 
-    } else if(item.label === 'Create') {
-        setOpenCreateModal(true);
-        onClose(true)
-    }
+    } 
   };
 
   const handleLogoutOpenModal = () => {
@@ -119,6 +129,12 @@ const Sidebar = ({ onClose }) => {
   const handleCloseModal = (e) => {
     // e.stopPropagation(); // Prevent event bubbling
     setOpenCreateModal(false);
+    onClose(false);
+  };
+
+  const handleContactCloseModal = (e) => {
+    // e.stopPropagation(); // Prevent event bubbling
+    setOpenContactModal(false);
     onClose(false);
   };
 
@@ -143,18 +159,29 @@ const Sidebar = ({ onClose }) => {
     }
   }, [isAuthenticated, navigate]);
 
-    useEffect(() => {
-        if (openCreateModal || openLogoutModal) {
-            document.body.style.overflow = "hidden"; // Disable scroll
-        } else {
-            document.body.style.overflow = ""; // Restore scroll
-        }
+  useEffect(() => {
+    if (message) {
+      toast.success(message, toastOptions);
+      dispatch({ type: "CLEAR_MESSAGE" })
+    }
+    if(error) {
+      toast.error(error, toastOptions);
+      dispatch({ type: "CLEAR_ERROR" })
+    }
+  }, [message, error, dispatch, toastOptions]);
 
-        // Cleanup when the component unmounts
-        return () => {
-            document.body.style.overflow = "";
-        };
-    }, [openCreateModal, openLogoutModal]);
+  useEffect(() => {
+      if (openCreateModal || openLogoutModal) {
+          document.body.style.overflow = "hidden"; // Disable scroll
+      } else {
+          document.body.style.overflow = ""; // Restore scroll
+      }
+
+      // Cleanup when the component unmounts
+      return () => {
+          document.body.style.overflow = "";
+      };
+  }, [openCreateModal, openLogoutModal]);
 
 
   return (
@@ -195,6 +222,18 @@ const Sidebar = ({ onClose }) => {
                     onClick={(e) => e.stopPropagation()}
                 >
                     <CreateModal onClose={handleCloseModal} />
+                </div>
+            </div>
+            
+            )
+        }
+        {openContactModal && (
+            <div className="overlay" onClick={handleCloseModal}>
+                <div
+                    className="modal-content"
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    <ContactModal onClose={handleContactCloseModal} />
                 </div>
             </div>
             

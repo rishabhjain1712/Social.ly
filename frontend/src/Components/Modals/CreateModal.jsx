@@ -14,6 +14,7 @@ const CreateModal = ({onClose}) => {
 
     const dispatch = useDispatch();
     const { loading, message } = useSelector(state => state.createPost);
+    const { user } = useSelector(state => state.userAuth);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -99,9 +100,9 @@ const CreateModal = ({onClose}) => {
                                 </div>
                                 <div className="create">
                                     <div className="user">
-                                        <img src="" alt="" />
+                                        <img src={user?.avatar?.url} alt="" />
                                         <div className="info">
-                                            <p>John Doe</p>
+                                            <p>{user?.username}</p>
                                             {/* <p>Software Engineer</p> */}
                                         </div>
                                     </div>

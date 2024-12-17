@@ -1,5 +1,5 @@
 import express from "express";
-import { followUser, getAllOtherUsers, getUserById, loginUser, logoutUser, myNotifications, myProfile, registerUser, resendLoginOtp, resendOtp, searchUsers, unfollowUser, updatePassword, updateUser, verifyLoginOtp, verifyUser } from "../controllers/userController.js";
+import { contactUs, followUser, getAllOtherUsers, getUserById, loginUser, logoutUser, myNotifications, myProfile, registerUser, resendLoginOtp, resendOtp, searchUsers, unfollowUser, updatePassword, updateUser, verifyLoginOtp, verifyUser } from "../controllers/userController.js";
 import { isAuthenticated } from "../middleware/auth.js";
 
 const userRouter = express.Router();
@@ -37,6 +37,8 @@ userRouter.get("/follow/:id", isAuthenticated, followUser);
 userRouter.get("/unfollow/:id", isAuthenticated, unfollowUser);
 
 userRouter.get("/notifications/my", isAuthenticated, myNotifications);
+
+userRouter.post("/contact", isAuthenticated, contactUs);
 
 
 export default userRouter

@@ -353,3 +353,29 @@ export const myNotifications = () => async (dispatch) => {
         })
     }
 }
+
+export const contactUs = (details) => async (dispatch) => {
+    try {
+        dispatch({
+            type: "CONTACT_US_REQUEST"
+        })
+
+        const { data } = await axios.post(`${URL}/contact`, details, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        console.log("Data: ", data);
+
+        dispatch({
+            type: "CONTACT_US_SUCCESS",
+            payload: data.message
+        })
+        
+    } catch (error) {
+        dispatch({
+            type: "CONTACT_US_FAILURE",
+            payload: error?.response?.data?.message
+        })
+    }
+}

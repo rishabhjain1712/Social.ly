@@ -61,4 +61,5 @@ export const message = {
     replyLikedMessage: "Reply liked successfully",
     postUpdatedMessage: "Post updated successfully",
     notificationsFoundMessage: "All Notifications fetched successfully",
+    feedbackSentMessage: "Feedback sent successfully",
 }
