@@ -2,7 +2,6 @@
 ---
 
 ## 📜 **CODE_OF_CONDUCT.md**
-```markdown
 # 🌈 Code of Conduct
 
 We are committed to fostering a welcoming and respectful community.
