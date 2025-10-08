@@ -28,7 +28,7 @@ Examples of behavior that contributes to a positive environment include:
 
 ### Enforcement
 Instances of abusive or unacceptable behavior may be reported to:
-📧 **<your-email@example.com>**
+📧 **<yashu1singh1111@gmail.com>**
 
 All complaints will be reviewed and investigated promptly.
 
