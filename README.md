@@ -8,9 +8,8 @@
 
 ### **Frontend**
 
-* React 18 with Vite
+* React 18 
 * Redux Toolkit (state management)
-* Tailwind CSS (styling)
 * Axios (API requests)
 
 ### **Backend**
@@ -78,7 +77,7 @@ npm install
 Create `.env` file in `frontend`:
 
 ```bash
-VITE_API_URL=http://localhost:5000/api
+REACT_APP_API_URL=http://localhost:5000/api
 ```
 
 #### **Run Frontend**
@@ -93,7 +92,7 @@ npm run dev
 
 ### **4️⃣ Connecting Backend with Frontend**
 
-* The frontend communicates with the backend through the base URL defined in `VITE_API_URL`.
+* The frontend communicates with the backend through the base URL defined in `REACT_APP_API_URL`.
 * Ensure both frontend and backend servers are running.
 * All API calls (login, posts, profile, etc.) will be sent to the backend at:
 
@@ -185,3 +184,4 @@ Social.ly/
 ---
 
 ---
+
