@@ -1,163 +1,187 @@
+# **Social.ly**
 
-# 🌐 Social.ly — Full Stack Web Application
-
-**Social.ly** is a full-stack web application built with **Node.js**, **Express**, and **React**.
-The project follows a modular architecture with separate folders for the **frontend** and **backend**, ensuring scalability and maintainability.
+> A full-stack social media web app where users can post, like, comment, and connect — built using React (frontend), Node.js + Express (backend), and MongoDB (database).
 
 ---
 
-## 📁 Project Structure
+## 🚀 **Tech Stack**
 
-```
-.
-├── backend/         # Express.js server and APIs
-│   ├── server.js    # Entry point for backend
-│   ├── package.json
-│   └── ...
-│
-└── frontend/        # React application
-    ├── src/
-    ├── package.json
-    └── ...
-```
+### **Frontend**
 
----
+* React 18 with Vite
+* Redux Toolkit (state management)
+* Tailwind CSS (styling)
+* Axios (API requests)
 
-## ⚙️ Tech Stack
+### **Backend**
 
-### 🖥️ Frontend
-
-* React (Create React App)
-* React Router DOM
-* Axios (for API communication)
-
-### 🧠 Backend
-
-* Node.js
-* Express.js
-* Nodemon (for development hot reload)
-* (Optional) Prisma / MongoDB / PostgreSQL for database integration
+* Node.js + Express.js (API framework)
+* MongoDB (database)
+* Mongoose (ODM)
+* JSON Web Token (auth)
+* Multer (file uploads)
+* Bcrypt (password hashing)
 
 ---
 
-## 🚀 Getting Started
+## ⚙️ **Project Setup**
 
-Follow these steps to set up and run the project locally.
-
-### 1️⃣ Clone the Repository
+### **1️⃣ Clone the repository**
 
 ```bash
 git clone https://github.com/<your-username>/Social.ly.git
 cd Social.ly
 ```
 
-### 2️⃣ Setup Backend
+---
+
+### **2️⃣ Backend setup**
 
 ```bash
 cd backend
 npm install
+```
+
+#### **Environment Variables**
+
+Create a `.env` file in the `backend` directory with the following values:
+
+```bash
+PORT=5000
+MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/socially
+JWT_SECRET=<your_secret_key>
+CLOUDINARY_NAME=<cloud_name>
+CLOUDINARY_API_KEY=<api_key>
+CLOUDINARY_API_SECRET=<api_secret>
+NODE_ENV=development
+```
+
+#### **Run Backend**
+
+```bash
 npm run dev
 ```
 
-By default, the backend runs on **[http://localhost:5000](http://localhost:5000)**
+> Backend will start on [http://localhost:5000](http://localhost:5000)
 
-**Example `.env` file:**
+---
 
-```
-PORT=5000
-DATABASE_URL=your_database_url
-JWT_SECRET=your_secret_key
-```
-
-### 3️⃣ Setup Frontend
+### **3️⃣ Frontend setup**
 
 ```bash
-cd ../frontend
+cd frontend
 npm install
-npm start
 ```
 
-By default, the frontend runs on **[http://localhost:3000](http://localhost:3000)**
+#### **Frontend Environment Variables**
+
+Create `.env` file in `frontend`:
+
+```bash
+VITE_API_URL=http://localhost:5000/api
+```
+
+#### **Run Frontend**
+
+```bash
+npm run dev
+```
+
+> Frontend runs on [http://localhost:5173](http://localhost:5173)
 
 ---
 
-## 🔗 Connecting Frontend and Backend
+### **4️⃣ Connecting Backend with Frontend**
 
-Make sure the frontend’s API calls point to your backend’s URL. Example:
+* The frontend communicates with the backend through the base URL defined in `VITE_API_URL`.
+* Ensure both frontend and backend servers are running.
+* All API calls (login, posts, profile, etc.) will be sent to the backend at:
 
-```js
-axios.get("http://localhost:5000/api/users");
+  ```
+  http://localhost:5000/api
+  ```
+
+---
+
+## 🗂️ **Project Structure**
+
+```
+Social.ly/
+│
+├── backend/
+│   ├── config/
+│   │   └── db.js               # MongoDB connection
+│   ├── controllers/            # Business logic for routes
+│   ├── middleware/             # Auth & error handlers
+│   ├── models/                 # Mongoose schemas
+│   ├── routes/                 # API route definitions
+│   ├── utils/                  # Helper functions
+│   ├── server.js               # Express server entry point
+│   └── .env.example
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/         # Reusable UI components
+│   │   ├── pages/              # Main page components
+│   │   ├── store/              # Redux slices & store setup
+│   │   ├── utils/              # API helpers
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   └── .env.example
+│
+└── README.md                   # Project documentation
 ```
 
 ---
 
-## 🧩 Build Scripts
+## 🧪 **Testing**
 
-**Backend (package.json)**
+* Run backend tests:
 
-```json
-{
-  "dev": "nodemon server.js"
-}
-```
+  ```bash
+  cd backend && npm test
+  ```
+* Run frontend tests (if configured):
 
-**Frontend (package.json)**
-
-```json
-{
-  "start": "react-scripts start",
-  "build": "react-scripts build"
-}
-```
+  ```bash
+  cd frontend && npm run test
+  ```
 
 ---
 
-## 📦 Folder Responsibilities
+## ✅ **Features**
 
-| Folder      | Description                                                            |
-| ----------- | ---------------------------------------------------------------------- |
-| `backend/`  | Contains Express server, routes, controllers, and configuration files. |
-| `frontend/` | Contains the React app, components, pages, and UI logic.               |
-
----
-
-## 🚢 Deployment
-
-1. Build the frontend:
-
-   ```bash
-   npm run build
-   ```
-2. Serve the frontend through the backend or deploy it separately using **Vercel** or **Netlify**.
-3. Deploy the backend using **Render**, **Railway**, **AWS**, or **Heroku**.
+* 🔐 JWT-based Authentication
+* 🖼️ Image Uploads via Cloudinary
+* 💬 Comments, Likes, and Posts
+* 👥 Follow / Unfollow Users
+* 🌓 Responsive UI with TailwindCSS
 
 ---
 
-## 🤝 Contributing
+## 🧰 **Future Enhancements**
 
-We welcome contributions!
-To get started:
+* Notifications & messaging
+* Dark mode toggle
+* Real-time chat using Socket.io
 
-1. **Fork** the repository
-2. **Create** a new branch:
+---
+
+## 🧑‍💻 **Contributing**
+
+1. Fork the repo
+2. Create a new branch
 
    ```bash
    git checkout -b feature/your-feature
    ```
-3. **Commit** your changes
-4. **Push** to your fork and open a **Pull Request**
+3. Commit changes
+
+   ```bash
+   git commit -m "Added X feature"
+   ```
+4. Push and open a PR referencing the related issue.
 
 ---
-
-## 🧾 License
-
-This project is licensed under the **MIT License**.
-See the [LICENSE](./LICENSE) file for details.
-
----
-
-## 🌟 Support the Project
-
-If you found this project helpful, please **star ⭐ the repository** — it means a lot!
 
 ---
